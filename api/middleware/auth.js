@@ -2,7 +2,7 @@ import jwt from "jsonwebtoken";
 import ErrorResponse from "../utils/errosResponse.js";
 import User from "../models/User.js";
 
-exports.protect = async (req, res, next) => {
+export const protect = async (req, res, next) => {
   let token;
 
   if (
