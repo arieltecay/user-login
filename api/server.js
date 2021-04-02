@@ -3,6 +3,7 @@ import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import movementsRoutes from "./routes/auth.js";
 import connectDB from "./config/db.js";
+import errorHandler from "./middleware/error.js";
 
 dotenv.config();
 connectDB();
@@ -14,6 +15,9 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(express.json());
 
 app.use("/api/auth", movementsRoutes);
+
+//Error Handler
+app.use(errorHandler);
 
 const PORT = process.env.PORT || 4000;
 const server = app.listen(PORT, () => console.log(`Running on port ${PORT}`));
