@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import bodyParser from "body-parser";
 import movementsRoutes from "./routes/auth.js";
+import getPrivateRoute from "./routes/private.js";
 import connectDB from "./config/db.js";
 import errorHandler from "./middleware/error.js";
 
@@ -15,6 +16,7 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(express.json());
 
 app.use("/api/auth", movementsRoutes);
+app.use("/api/private", getPrivateRoute);
 
 //Error Handler
 app.use(errorHandler);
